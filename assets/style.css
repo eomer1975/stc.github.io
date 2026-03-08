@@ -1,0 +1,158 @@
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+}
+
+body.is-loading {
+  overflow: hidden;
+}
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  background: linear-gradient(145deg, #0b3c5d 0%, #1f5f8b 70%, #2b86c5 100%);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+body.is-loaded .page-loader {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-core {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  display: grid;
+  place-items: center;
+}
+
+.loader-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.loader-ring--outer {
+  inset: 0;
+  border-top-color: #ffffff;
+  border-right-color: rgba(255, 255, 255, 0.4);
+  animation: stc-spin 1.4s linear infinite;
+}
+
+.loader-ring--inner {
+  inset: 12px;
+  border-bottom-color: #ffffff;
+  border-left-color: rgba(255, 255, 255, 0.4);
+  animation: stc-spin-rev 1s linear infinite;
+}
+
+.loader-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2);
+  animation: stc-pulse 1.8s ease-in-out infinite;
+}
+
+.loader-text {
+  color: #fff;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+@keyframes stc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stc-spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes stc-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.stc-nav {
+  background: #0b3c5d;
+}
+
+.hero {
+  min-height: 100vh;
+  padding-top: 6rem;
+  background: linear-gradient(135deg, #0b3c5d 0%, #1f5f8b 60%, #2b86c5 100%);
+  color: #fff;
+}
+
+.section-padding {
+  padding: 5rem 0;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+}
+
+.section-padding > .container {
+  width: 100%;
+}
+
+.parallax-divider {
+  min-height: 72vh;
+  background-image: linear-gradient(rgba(11, 60, 93, 0.35), rgba(11, 60, 93, 0.35)), url("istockphoto-531475568-1024x1024.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: background-position;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+@media (max-width: 991.98px) {
+  .hero {
+    min-height: auto;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+  }
+
+  .section-padding {
+    padding: 4rem 0;
+    min-height: 85vh;
+    align-items: flex-start;
+  }
+
+  .parallax-divider {
+    min-height: 52vh;
+  }
+
+  .loader-core {
+    width: 112px;
+    height: 112px;
+  }
+
+  .loader-logo {
+    width: 64px;
+    height: 64px;
+  }
+}
